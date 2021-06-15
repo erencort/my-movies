@@ -12,7 +12,7 @@ class SearchBar extends React.Component{
                         <input onChange={this.props.searchMovieProp} type="text" className="form-control" placeholder="Search a Movie" />
                     </div>
                     <div className="col-1">
-                        <button onClick={this.props.resetHandlerProp} className="btn btn-primary">Reset</button>
+                        <button onClick={this.props.resetHandlerProp} type="reset" className="btn btn-primary">Reset</button>
                     </div>
                 </div>
             </form>
