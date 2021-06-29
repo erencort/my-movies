@@ -10,8 +10,8 @@ class MovieCard extends React.Component{
             <div className="card">
                 
                 <div className="row">
-                    {this.props.movies.map((movie) => (
-                        <div className="col-lg-4" key={movie.id} >
+                    {this.props.movies.map((movie, i) => (
+                        <div className="col-lg-4" key={i} >
                             <img src={movie.imageURL} className="card-img-top" alt="Movie" />
                             <div className="card-body">
                             <h5 className="card-title">{movie.name}</h5>

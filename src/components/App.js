@@ -1,7 +1,9 @@
 import React from "react"
 import SearchBar from "./SearchBar"
 import MovieCard from "./MovieCard"
+import AddMovie from "./AddMovie"
 import axios from "axios"
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends React.Component{
     state={
@@ -41,10 +43,20 @@ class App extends React.Component{
       }))
     }
 
+    // Search Movie
     searchMovie = (e) => {
       this.setState({searchValue: e.target.value})
     }
 
+    // Add Movie
+    addMovie = async (movie) => {
+      await axios.post(`http://localhost:3002/movies/`, movie)
+      this.setState(state => ({
+        movies:state.movies.concat([movie])
+      }))
+    }
+
+    //Reset Searchbar
     resetHandler = () => {
       this.setState({
         searchValue: "",
@@ -61,14 +73,31 @@ class App extends React.Component{
       )
 
         return(
+          <Router>
             <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <SearchBar searchMovieProp={this.searchMovie} resetHandlerProp={this.resetHandler} />
-                    </div>
-                </div>
-                <MovieCard movies={filteredMovies} handleDelete={this.handleDelete}/>
+
+              <Route path="/" exact render={() => (
+                <React.Fragment>
+                  <div className="row">
+                  <div className="col-12">
+                      <SearchBar searchMovieProp={this.searchMovie} resetHandlerProp={this.resetHandler} />
+                  </div>
+                  </div>
+                  <MovieCard movies={filteredMovies} handleDelete={this.handleDelete}/>
+                </React.Fragment>
+              )}>
+
+              </Route>
+
+              <Route path="/add" render={({history}) => (
+                <AddMovie onAddMovie = {(movie) => {this.addMovie(movie)
+                history.push("/")}} />
+              )}>
+    
+              </Route>
+  
             </div>
+          </Router>
         )
     }
 }
