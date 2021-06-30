@@ -19,7 +19,11 @@ class App extends React.Component{
     //   this.setState({movies: data})
     // }
 
-    async componentDidMount(){
+    componentDidMount(){
+      this.getMovies()
+    }
+
+    async getMovies(){
       const response = await axios.get("http://localhost:3002/movies")
       this.setState({movies: response.data})
     }
@@ -42,6 +46,7 @@ class App extends React.Component{
       this.setState(prev => ({
         movies: newMovieList
       }))
+      this.getMovies()
     }
 
     // Search Movie
@@ -55,6 +60,13 @@ class App extends React.Component{
       this.setState(state => ({
         movies:state.movies.concat([movie])
       }))
+      this.getMovies()
+    }
+
+    // Edit Movie
+    editMovie = async (id, updatedMovie) => {
+      await axios.put(`http://localhost:3002/movies/${id}`, updatedMovie)
+      this.getMovies()
     }
 
     //Reset Searchbar
@@ -62,7 +74,6 @@ class App extends React.Component{
       this.setState({
         searchValue: "",
       })
-      
     }
 
     render(){
@@ -92,8 +103,10 @@ class App extends React.Component{
                 history.push("/")}} />
               )}>
               </Route>
-              <Route path="/edit/:id" component={EditMovie} >
-
+              <Route path="/edit/:id" render={(props) => (
+                <EditMovie {...props} onEditMovie = {(id ,movie) => {this.editMovie(id ,movie)
+                }} />
+              )}>
               </Route>
             </div>
           </Router>
