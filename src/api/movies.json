@@ -1,3 +1,25 @@
 {
-  "movies": []
+  "movies": [
+    {
+      "name": "Harry Potter and the Prisoner of Azkaban",
+      "rating": "8",
+      "imageURL": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
+      "overview": "Year three at Hogwarts means new fun and challenges as Harry learns the delicate art of approaching a Hippogriff, transforming shape-shifting Boggarts into hilarity and even turning back time.",
+      "id": 1
+    },
+    {
+      "name": "Sex Education",
+      "rating": "8.3",
+      "imageURL": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4Bph0hhnDH6dpc0SZIV522bLm4P.jpg",
+      "overview": "Inexperienced Otis channels his sex therapist mom when he teams up with rebellious Maeve to set up an underground sex therapy clinic at school.",
+      "id": 2
+    },
+    {
+      "name": "BLACKPINK: Light Up the Sky",
+      "rating": "9",
+      "imageURL": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uKFTuQjWKE5bp9QRhxzBCBlbbE4.jpg",
+      "overview": "Record-shattering Korean girl band BLACKPINK tell their story — and detail the hard fought journey of the dreams and trials behind their meteoric rise.",
+      "id": 3
+    }
+  ]
 }
